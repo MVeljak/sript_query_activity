@@ -1,15 +1,31 @@
-
-import re
-
+import random
+import uuid
 from constant import FILE_NAME
+from datetime import datetime, timedelta
 
 
-def createParentUUID(ACTIVITY_UUID_PARENT):
-    return ACTIVITY_UUID_PARENT if ACTIVITY_UUID_PARENT == 'null' else "'{}'".format(ACTIVITY_UUID_PARENT)
+def getDate(gap=0, datonly=False):
+    now = datetime.now()
+    if gap == 0:
+        return now.date() if datonly else now
+    elif gap > 0:
+        result = now + timedelta(hours=gap)
+        return result.date() if datonly else result
+    else:
+        result = now - timedelta(hours=gap)
+        return result.date() if datonly else result
 
 
-def getAziendaSanitaria(ambulatoi):
-    return "'{}'".format(ambulatoi.split("-")[0].strip())
+def getUUID():
+    return uuid.uuid4()
+
+
+def randomChoice(lista):
+    return random.choice(lista)
+
+
+def get_azienda_sanitaria(ambulatorio):
+    return "{}".format(ambulatorio.split("-")[0].strip())
 
 
 def createValueJava(value):
@@ -22,6 +38,7 @@ def pritInFile(insertQuery):
 
 
 def set_value(value):
+    # value = str(value)
     if not value:
         return 'null'
     if str(value).isnumeric():

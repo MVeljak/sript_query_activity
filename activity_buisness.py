@@ -1,6 +1,8 @@
-from base_buisness import BaseTable
+from datetime import datetime
 
-_DB_SHEMA__ = "tv_activities"
+from base_buisness import BaseTable
+from constant import DB_SCHEMA
+
 
 class Activity(BaseTable):
     __tablename__ = "t_activity"
@@ -35,6 +37,38 @@ class Activity(BaseTable):
 
     def insert(self):
         self.creteField(self._FORMAT_KEY_)
-        return f"""INSERT INTO {_DB_SHEMA__}.{self.__tablename__}\n({self.columns})\nVALUES ({self.values});"""
+        return f"""INSERT INTO {DB_SCHEMA}.{self.__tablename__}\n({self.columns})\nVALUES ({self.values});"""
 
+
+# class Cervice(BaseTable):
+#     __tablename__ = "t_cerv_mamm"
+#     _FORMAT_KEY_ = ['type', 'result']
+#
+#     def __init__(self, uuid=None, date_list=None, date_end=None, ambulatorio=None, event_type=None,
+#                  previous_invite=None, responded=None, send_via_sms=None, azienda_sanitaria=None,
+#                  sequential_number=None, data_pendenza=None, alert_recall=None, contact_date=None,
+#                  contact_to=None, contact_from=None, recapito_telefonico_casa=None, recapito_telefonico_cellulare=None):
+#         super().__init__()
+#
+#         self.uuid = uuid
+#         self.date_list = date_list
+#         self.date_end = date_end
+#         self.ambulatorio = ambulatorio
+#         self.event_type = event_type
+#         self.previous_invite = previous_invite
+#         self.responded = responded
+#         self.send_via_sms = send_via_sms
+#         self.azienda_sanitaria = azienda_sanitaria
+#         self.sequential_number = sequential_number
+#         self.data_pendenza = data_pendenza
+#         self.alert_recall = alert_recall
+#         self.contact_date = contact_date
+#         self.contact_to = contact_to
+#         self.contact_from = contact_from
+#         self.recapito_telefonico_casa = recapito_telefonico_casa
+#         self.recapito_telefonico_cellulare = recapito_telefonico_cellulare
+#
+#     def insert(self):
+#         self.creteField(self._FORMAT_KEY_)
+#         return f"""INSERT INTO {DB_SCHEMA}.{self.__tablename__}\n({self.columns})\nVALUES ({self.values});"""
 

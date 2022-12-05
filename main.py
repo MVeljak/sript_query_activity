@@ -1,19 +1,13 @@
-from activity_menager import create_activity__new
+from activity_menager import create_activity_sequence
 
 
-def print_hi():
-    a = create_activity__new(3)
-    print(f'{a}')
+def print_query(num):
+    lista=create_activity_sequence(num, "spostamento", False,  3, False)
+
+    for a in lista:
+        print(f'{a.insert()}')
 
 
 if __name__ == '__main__':
-    print_hi()
+    print_query(1)
 
-# for k, v in kwargs.items():
-#            # result1 = ",".join("'{}'".format(k))
-#            result1 = ""
-#            if k == "type":
-#                result1 =
-#            result1 = f"'{k}'"
-#            # print(f'{k}={v}')
-#            listColValue.append(result1)
